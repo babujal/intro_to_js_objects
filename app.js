@@ -81,15 +81,16 @@ Exercise 6
 
 Solve Exercise 6 here:
 */
-const gyms = game.gyms
+// const gyms = game.gyms
 // console.log(gyms)
 
-gyms.forEach((gyms) => {
+game.gyms.forEach((gyms) => {
     if (gyms.difficulty < 3) {
         gyms.completed = true
     }
 })
-// console.log(game.gyms)
+console.log(game.gyms)
+console.log('-------------------------------')
 ///////////////////////////////////
 
 /*
@@ -129,10 +130,9 @@ Exercise 8
 
 Solve Exercise 8 here:
 */
-const party = game.party
 
-party.forEach((party) => {
-    console.log(party)
+game.party.forEach((element) => {
+    console.log(element)
 })
 ////////////////////////////////////////////
 
@@ -144,3 +144,139 @@ Exercise 9
 
 Solve Exercise 9 here:
 */
+console.log('------------------------------Exercise 9 forEach')
+//Why the code below print two more pokemons that the code in line 154?
+pokemon.forEach((pokemon) => {
+    if (pokemon.starter === true) {
+        console.log(pokemon.name)
+    }
+})
+console.log('------------------------------Exercise 9 filter & forEach')
+pokemon.filter((pokemon) => {
+    return pokemon.starter === true
+}).forEach((pokemon) => {
+    console.log(pokemon.name)
+})
+////////////////////////////////////////////////
+
+/*
+Exercise 10
+1. Add a method called `catchPokemon` to the `game` object. This method should:
+  - Accept an object as a parameter called `pokemonObj`
+  - Add the `pokemonObj` to the `game.party` array.
+  - not return anything
+
+After writing this method, call it and pass in a Pokemon object of your choice from the `pokemon` data to catch it.
+
+Solve Exercise 10 here:
+*/
+console.log('-----------------------------Exercise 10')
+
+game.catchPokemon = (pokemonObj) => {
+    game.party.push(pokemonObj)
+}
+
+game.catchPokemon(pokemon[1])
+console.log(game.party)
+////////////////////////////////////////////
+
+/*
+Exercise 11
+1. Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify it so that it also decreases the number of pokeballs in your inventory each time you catch a Pokémon.
+2. How will you find and update the quantity of pokeballs in the `game.items` array?
+
+Tips:
+For this exercise, it's okay to have a negative number of pokeballs.
+After updating the method, call it and pass in a Pokemon object of your choice from the `pokemon` data to catch it.
+Also, log the `game.items` array to confirm that the pokeball quantity is being decremented.
+
+Solve Exercise 11 here:
+*/
+console.log('-----------------------------Exercise 11')
+console.log(`Number of pokeballs before method call ${game.items.length}`)
+game.catchPokemon = (pokemonObj) => {
+    game.party.push(pokemonObj)
+    game.items.splice(0, 1)
+    console.log(`Number of pokeballs after method is call ${game.items.length}`)
+}
+
+game.catchPokemon(`Charmeleon`)
+console.log(`Pokemons in the party array: ${game.party}`)
+//////////////////////////////////////////
+
+/*
+Exercise 12
+1. Similar to Exercise 6, now complete gyms with a difficulty below 6. How will you approach this?
+ (change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 12 here:
+*/
+console.log('-----------------------------Exercise 12')
+
+game.gyms.forEach((gyms) => {
+    if (gyms.difficulty < 6) {
+        gyms.completed = true
+    }
+})
+console.log(game.gyms)
+////////////////////////////////////////////
+
+/*
+Exercise 13
+1. Create a `gymStatus` method in `game` to tally completed and incomplete gyms.
+2. How will you iterate through the `gyms` array and update the tally? Remember to log the final tally.
+
+This method should:
+  - Not accept any arguments.
+  - Initially create a constant `gymTally`, which is an object that has two 
+    properties: `completed` and `incomplete`, both of which are initially set to 0.
+  - Iterate through the objects in the `game.gyms` array and update the 
+    properties on `gymTally` as follows: 
+    - `completed` should count how many gyms in the array have a value of `true` 
+      for their `completed` property. 
+    - `incomplete` should count how many gyms in the array have a value of 
+      `false` for their `completed` property.
+  - Log the value of `gymTally`.
+  - The method should not return anything.
+
+For example, if five gym objects have a value of `true` on their `completed` property and three gym objects have a value of `false` on their `completed` property, the logged value would be: `{ completed: 5, incomplete: 3 }`.
+
+Solve Exercise 13 here:
+*/
+console.log('-----------------------------Exercise 13')
+
+// const gymsToFilter = game.gyms
+// gymsToFilter.filter((gymsToFilter) => {
+//     return gymsToFilter.completed === true
+// }).forEach((gymsToFilter) => {
+//     if (gymsToFilter.completed === true) {
+//         console.log(gymsToFilter.location)
+//     }
+// })
+
+// game.gyms.forEach((gyms) => {
+//     if (gyms.difficulty < 6) {
+//         gyms.completed = true
+//     }
+// })
+// console.log(game.gyms)
+
+// game.catchPokemon = (pokemonObj) => {
+//     game.party.push(pokemonObj)
+//     game.items.splice(0, 1)
+//     console.log(`Number of pokeballs after method is call ${game.items.length}`)
+// }
+
+game.gymStatus = () => {
+    const gymTally = { completed: 0, incomplete: 0 }
+    game.gyms.forEach((gyms) => {
+        if (gyms.completed === true) {
+            gymTally.completed += 1
+        }else{
+            gymTally.incomplete += 1
+        }
+    })
+    console.log(gymTally)
+}
+
+game.gymStatus()
