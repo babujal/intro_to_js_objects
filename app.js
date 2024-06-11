@@ -30,9 +30,11 @@ Exercise 3
 
 Solve Exercise 3 here:
 */
+console.log('-----------------------------Exercise 3')
 
 game.difficulty = 'Easy'
-// console.log(game)
+console.log(game)
+/////////////////////////////////////////
 
 /*
 Exercise 4
@@ -42,6 +44,7 @@ Exercise 4
 
 Solve Exercise 4 here:
 */
+console.log('-----------------------------Exercise 4')
 
 const pokemonName = 'Butterfree'
 const indexByName = pokemon.findIndex((pokemon) => {
@@ -54,7 +57,7 @@ const setStarter = () => {
     game.party.push(pokemon[indexByName].name)
 }
 setStarter()
-// console.log(`Starter pokemon is ${game.party} and the property starter from pokemon array is set to ${pokemon[indexByName].starter}`)
+console.log(`Starter pokemon is ${game.party} and the property starter from pokemon array is set to ${pokemon[indexByName].starter}`)
 ///////////////////////////////////////////////////
 
 /*
@@ -65,12 +68,13 @@ Exercise 5
 
 Solve Exercise 5 here:
 */
+console.log('-----------------------------Exercise 5')
 
 const theeAdded = (pok1, pok2, pok3) => {
     game.party.push(pok1, pok2, pok3)
 }
 theeAdded('Pidgey','Weedle','Charizard')
-// console.log(game.party)
+console.log(game.party)
 /////////////////////////////////////////////////
 
 /*
@@ -81,8 +85,7 @@ Exercise 6
 
 Solve Exercise 6 here:
 */
-// const gyms = game.gyms
-// console.log(gyms)
+console.log('-----------------------------Exercise 6')
 
 game.gyms.forEach((gyms) => {
     if (gyms.difficulty < 3) {
@@ -90,7 +93,6 @@ game.gyms.forEach((gyms) => {
     }
 })
 console.log(game.gyms)
-console.log('-------------------------------')
 ///////////////////////////////////
 
 /*
@@ -109,18 +111,20 @@ More Hints: The existing starter Pokemon will be *replaced* in your party with t
 
 Solve Exercise 7 here:
 */
-const evolvedIndex = indexByName + 1
+console.log('-----------------------------Exercise 7')
+
+const evolvedIndex = indexByName + 1      //The var indexByName is defined in line 50 of ercercise of ercercise #4.
 const evolvedPokemon = pokemon[evolvedIndex].name
-// console.log(evolvedIndex)
-// console.log(evolvedPokemon)
+console.log(evolvedIndex)
+console.log(evolvedPokemon)
 
 const setEvolvedStarted = () => {
     pokemon[evolvedIndex].starter = true
     game.party.splice(0, 1, evolvedPokemon)
 }
 setEvolvedStarted()
-// console.log(pokemon[evolvedIndex])
-// console.log(`Party array with evolved pokemon: ${game.party}`)
+console.log(pokemon[evolvedIndex])
+console.log(`Party array with evolved pokemon: ${game.party}`)
 /////////////////////////////////////////////
 
 /*
@@ -130,7 +134,7 @@ Exercise 8
 
 Solve Exercise 8 here:
 */
-
+console.log('-----------------------------Exercise 8')
 game.party.forEach((element) => {
     console.log(element)
 })
@@ -145,7 +149,6 @@ Exercise 9
 Solve Exercise 9 here:
 */
 console.log('------------------------------Exercise 9 forEach')
-//Why the code below print two more pokemons that the code in line 154?
 pokemon.forEach((pokemon) => {
     if (pokemon.starter === true) {
         console.log(pokemon.name)
@@ -157,6 +160,7 @@ pokemon.filter((pokemon) => {
 }).forEach((pokemon) => {
     console.log(pokemon.name)
 })
+//The above ercercise can be done with reduce method as well. PRACTICE.
 ////////////////////////////////////////////////
 
 /*
@@ -245,28 +249,6 @@ Solve Exercise 13 here:
 */
 console.log('-----------------------------Exercise 13')
 
-// const gymsToFilter = game.gyms
-// gymsToFilter.filter((gymsToFilter) => {
-//     return gymsToFilter.completed === true
-// }).forEach((gymsToFilter) => {
-//     if (gymsToFilter.completed === true) {
-//         console.log(gymsToFilter.location)
-//     }
-// })
-
-// game.gyms.forEach((gyms) => {
-//     if (gyms.difficulty < 6) {
-//         gyms.completed = true
-//     }
-// })
-// console.log(game.gyms)
-
-// game.catchPokemon = (pokemonObj) => {
-//     game.party.push(pokemonObj)
-//     game.items.splice(0, 1)
-//     console.log(`Number of pokeballs after method is call ${game.items.length}`)
-// }
-
 game.gymStatus = () => {
     const gymTally = { completed: 0, incomplete: 0 }
     game.gyms.forEach((gyms) => {
@@ -280,3 +262,62 @@ game.gymStatus = () => {
 }
 
 game.gymStatus()
+////////////////////////////////////////////
+
+/*
+Exercise 14
+1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
+
+This method should:
+  - Not accept any arguments.
+  - Count the number of Pokemon in the party.
+  - return the found number of Pokemon in the party.
+
+Solve Exercise 14 here:
+*/
+console.log('-----------------------------Exercise 14')
+
+game.partyCount = () => {
+    return game.party.length
+}
+console.log(`Return of the lenght of party: ${game.partyCount()}`)
+
+//Using a reduce method
+game.partyCount = game.party.reduce((total, currentVal) => {
+    // console.log(`Iteration: ${currentVal}`)
+    total += 1
+
+    return total
+},0)
+console.log(`Returning with a reduce method: ${game.partyCount}`)
+////////////////////////////////////////
+
+/*
+Exercise 15
+1. Now, complete gyms with a difficulty below 8. Reflect on how this is similar 
+to or different from the previous gym exercises.
+(change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 15 here:
+*/
+console.log('-----------------------------Exercise 15')
+
+game.gyms.forEach((gyms) => {
+    if (gyms.difficulty < 8) {
+        gyms.completed = true
+    }
+})
+console.log(game.gyms)
+//////////////////////////////////////////
+
+/*
+/*
+Exercise 16
+1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
+
+
+Solve Exercise 16 here:
+*/
+console.log('-----------------------------Exercise 16')
+
+console.log(game)
